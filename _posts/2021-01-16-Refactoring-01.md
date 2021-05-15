@@ -1,11 +1,11 @@
 ---
-Title: 리팩터링: 
-Date: 2021-01-16 00:49:00 +0800
-Categories: [Refactoring]
+title: 리팩터링
+author: Hoya
+date: 2021-01-16 00:49:00 +0800
+categories: [Refactoring]
 tags: [coding]
 math: true
 mermaid: true
-
 ---
 
 ## 리팩터링
