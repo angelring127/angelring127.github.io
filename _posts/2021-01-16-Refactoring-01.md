@@ -1,7 +1,7 @@
 ---
 Title: 리팩터링: 
 Date: 2021-01-16 00:49:00 +0800
-Categories: [목표]
+Categories: [Refactoring]
 tags: [coding]
 math: true
 mermaid: true
