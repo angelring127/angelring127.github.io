@@ -1,0 +1,875 @@
+<!DOCTYPE html><html lang="en" mode="dark" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="theme" content="Chirpy v2.7.2"><meta name="generator" content="Jekyll v4.2.0" /><meta property="og:title" content="React Hook" /><meta name="author" content="Hoya" /><meta property="og:locale" content="en_US" /><meta name="description" content="React Hook" /><meta property="og:description" content="React Hook" /><link rel="canonical" href="https://angelring127.github.io/posts/react-hook/" /><meta property="og:url" content="https://angelring127.github.io/posts/react-hook/" /><meta property="og:site_name" content="Hoya" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2019-12-03T21:53:00+09:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="React Hook" /><meta name="twitter:site" content="@HOYA17993842" /><meta name="twitter:creator" content="@Hoya" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"author":{"@type":"Person","name":"Hoya"},"description":"React Hook","url":"https://angelring127.github.io/posts/react-hook/","@type":"BlogPosting","headline":"React Hook","dateModified":"2019-12-03T21:53:00+09:00","datePublished":"2019-12-03T21:53:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://angelring127.github.io/posts/react-hook/"},"@context":"https://schema.org"}</script><title>React Hook | Hoya</title><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="apple-touch-icon" href="/assets/img/favicons/apple-icon.png"><link rel="apple-touch-icon" href="/assets/img/favicons/apple-icon-precomposed.png"><link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicons/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicons/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicons/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicons/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicons/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/assets/img/favicons/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicons/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="/assets/img/favicons/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicons/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicons/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/manifest.json"><meta name='msapplication-config' content='/assets/img/favicons/browserconfig.xml'><meta name="msapplication-TileColor" content="#ffffff"><meta name="msapplication-TileImage" content="/assets/img/favicons/ms-icon-144x144.png"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="cdn.jsdelivr.net"><link rel="dns-prefetch" href="cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha256-LA89z+k9fjgMKQ/kq4OO2Mrf8VltYml/VES+Rg0fh20=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous"><link rel="preload" href="/assets/css/post.css" as="style"><link rel="stylesheet" href="/assets/css/post.css"><link rel="preload" as="style" href="/assets/css/lib/bootstrap-toc.min.css"><link rel="stylesheet" href="/assets/css/lib/bootstrap-toc.min.css" /> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> <script defer src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.15.0,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script async src="/assets/js/post.min.js"></script> <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id="></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', ''); }); </script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="/assets/img/lian.png" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">Hoya</a></div><div class="site-subtitle font-italic">개발을 할려합니다.</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/tabs/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tabs/tags/" class="nav-link"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/tabs/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/tabs/about/" class="nav-link"> <i class="fa-fw fas fa-info ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center"> <a href="https://github.com/angelring127" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <a href="https://twitter.com/HOYA17993842" aria-label="twitter" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['angelring127','gmail.com'].join('@')" aria-label="email" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" > <i class="fas fa-rss"></i> </a></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Posts </a> </span> <span>React Hook</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>React Hook</h1><div class="post-meta text-muted d-flex flex-column"><div> <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Tue, Dec 3, 2019, 9:53 PM +0900" > Dec 3, 2019 <i class="unloaded">2019-12-03T21:53:00+09:00</i> </span> by <span class="author"> Hoya </span></div><div> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="4177 words">23 min</span></div></div><div class="post-content"><h1 id="react-hook">React Hook</h1><blockquote><p>Hook은 v16.8에 새로 도입된 기능, 함수형 컴포넌트에서도 상태 관리를 가능캐 하는 useState, 렌더링 직후 작업을 설정하는 useEffect 등의 기능을 제공 한다 최근에는 Hook 과 react-redux 를 이용하는 기능이 많이 지고 있다.</p></blockquote><h2 id="1-usestate">1. useState</h2><blockquote><p>Hook의 가장 기본적인 기능으로서, 함수형 컴포넌트를 가변적인 상태를 지니고 있을 수 있게 도와준다.</p></blockquote><ul><li><p>Counter.js</p><div class="language-react highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre><td class="rouge-code"><pre><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useState</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="c1">// useState </span>
+<span class="c1">// @param : 상태의 기본값</span>
+<span class="c1">// @return : array =&gt; [ 원소 상태 값, 상태를 설정하는 함수]</span>
+<span class="kd">const</span> <span class="nx">Counter</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">value</span><span class="p">,</span> <span class="nx">setValue</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+        현재 카운터 값은 <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">value</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> 입니다.
+      <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setValue</span><span class="p">(</span><span class="nx">value</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="p">&gt;</span>+1<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setValue</span><span class="p">(</span><span class="nx">value</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="p">&gt;</span>-1<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+<span class="p">};</span>
+</pre></table></code></div></div></ul><h2 id="e-useeffect">e. useEffect</h2><blockquote><p>useEffect는 react component가 렌더링 될 때마다 특정 작업을 수행하도록 도와주는 Hook입니다. Class component의 componentDidMount 와 componentDidUpdate를 합친 형태로 보아도 무방합니다.</p></blockquote><div class="language-react highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+</pre><td class="rouge-code"><pre><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useState</span><span class="p">,</span> <span class="nx">useEffect</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">Info</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">name</span><span class="p">,</span> <span class="nx">setName</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="dl">''</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">nickname</span><span class="p">,</span> <span class="nx">setNickname</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="dl">''</span><span class="p">);</span>
+
+    <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">렌더링이 완료되었습니다.</span><span class="dl">'</span><span class="p">);</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">({</span>
+            <span class="nx">name</span><span class="p">,</span>
+            <span class="nx">nickname</span>
+        <span class="p">});</span>
+    <span class="p">},</span> <span class="p">[</span><span class="nx">name</span><span class="p">]);</span>
+
+    <span class="kd">const</span> <span class="nx">onChangeName</span> <span class="o">=</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">setName</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">const</span> <span class="nx">onChangeNickname</span> <span class="o">=</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">setNickname</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">input</span> <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">name</span><span class="si">}</span> <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">onChangeName</span><span class="si">}</span> <span class="p">/&gt;</span>
+                <span class="p">&lt;</span><span class="nt">input</span> <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">nickname</span><span class="si">}</span> <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">onChangeNickname</span><span class="si">}</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>이름: <span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> <span class="si">{</span><span class="nx">name</span><span class="si">}</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>닉네임: <span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> <span class="si">{</span><span class="nx">nickname</span><span class="si">}</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">Info</span><span class="p">;</span>
+</pre></table></code></div></div><h4 id="21-마운트-될-때만-실행하고-싶을-때">2.1 마운트 될 때만 실행하고 싶을 때</h4><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>&gt;컴포넌트가 화면에 가장 처음 렌더링 될 때만 실행되고 업데이트 할 경우에는 실행 할 필요가 없는 경우엔 함수의 두번째 파라미터를 비어있는 배열을`[]`넣어주면 됩니다.
+</pre></table></code></div></div><div class="language-react highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">마운트 될 때만 실행됩니다.</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">},</span> <span class="p">[]);</span>
+</pre></table></code></div></div><h4 id="22-특정-값이-업데이트-될-때만-실행하고-싶을-때">2.2 특정 값이 업데이트 될 때만 실행하고 싶을 때</h4><blockquote><p>두번째 파라미터 배열안에 검사하고 싶은 값을 넣으면 됩니다.</p></blockquote><div class="language-react highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="nx">useEfect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+<span class="p">},[</span><span class="nx">name</span><span class="p">]);</span>
+</pre></table></code></div></div><h4 id="23-뒷정리-하기">2.3 뒷정리 하기</h4><blockquote><p>useEffect는 기본적으로 렌더링 되고난 직후마다 실행, 두번째 파라미터 배열에 무엇을 넣느냐에 따라 실행되는 조건이 변함 만약 컴포넌트가 언마운트되기 전이나, 업데이트 되기 직전에 어떠한 작업을 수행하고싶다면 useEffect에서 뒷정리(cleanup) 함수를 반환해주면 된다.</p></blockquote><h5 id="infojs-useeffect">Info.js useEffect</h5><div class="language-react highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre><span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">effect</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+  <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">cleanup</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+  <span class="p">};</span> <span class="c1">// 두번째 파라미터에 빈배열을 넣는경우 언마운트 될 때만 cleanup함수가 호출, </span>
+  	<span class="c1">// 배열에 특정 변수를 넣을경우 언마운트와 특정 변수의 업데이트 직전 cleanup 호출</span>
+<span class="p">});</span>
+</pre></table></code></div></div><h5 id="appjs">App.js</h5><div class="language-react highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre><td class="rouge-code"><pre><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useState</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">logo</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./logo.svg</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">Component</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./component</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="dl">'</span><span class="s1">./App.css</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">visible</span><span class="p">,</span> <span class="nx">setVisible</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">button</span>
+        <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">setVisible</span><span class="p">(</span><span class="o">!</span><span class="nx">visible</span><span class="p">);</span>
+        <span class="p">}</span><span class="si">}</span>
+      <span class="p">&gt;</span>
+        <span class="si">{</span><span class="nx">visible</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">숨기기</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">보이기</span><span class="dl">'</span><span class="si">}</span>
+      <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">br</span> <span class="p">/&gt;</span>
+      <span class="si">{</span><span class="nx">visible</span> <span class="o">&amp;&amp;</span> <span class="p">&lt;</span><span class="nc">Component</span><span class="p">.</span><span class="nc">Info</span> <span class="p">/&gt;</span><span class="si">}</span>
+      <span class="p">&lt;</span><span class="nc">Component</span><span class="p">.</span><span class="nc">Counter</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</pre></table></code></div></div><h2 id="3-usecontext">3. useContext</h2><blockquote><p>이 Hook 을 사용하면 함수형 컴포넌트에서 Context 를 보다 더 쉽게 사용 할 수 있다.</p></blockquote><p>Context.js</p><div class="language-react highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre><td class="rouge-code"><pre><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">createContext</span><span class="p">,</span> <span class="nx">useContext</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">ThemeContext</span> <span class="o">=</span> <span class="nx">createContext</span><span class="p">(</span><span class="dl">'</span><span class="s1">black</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">ContextSample</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">thene</span> <span class="o">=</span> <span class="nx">useContext</span><span class="p">(</span><span class="nx">ThemeContext</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">style</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">width</span><span class="p">:</span> <span class="dl">'</span><span class="s1">24px</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">height</span><span class="p">:</span> <span class="dl">'</span><span class="s1">24px</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">background</span> <span class="p">:</span> <span class="nx">theme</span>
+  <span class="p">};</span>
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="p">=</span><span class="si">{</span><span class="nx">style</span><span class="si">}</span> <span class="p">/&gt;;</span>
+<span class="p">};</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">ContextSample</span><span class="p">;</span>
+</pre></table></code></div></div><h2 id="4-usereducer">4. useReducer</h2><blockquote><p>useReducer 는 useState 보다 컴포넌트에서 더 다양한 상황에 따라 다양한 상태를 다른 값으로 업데이트해주고 싶을 때 사용하는 Hook 입니다.</p><p>Reducer는 Current, Update를 위해 필요한 정보를 담은 액션(action) 값을 전달 받아 새로운 상태를 반환하는 함수 <strong>Reducer함수에서는 새로운 상태를 만들 때 꼭 불변성을 지켜야합니다.</strong></p></blockquote><div class="language-react highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">reducer</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span> <span class="p">...</span> <span class="p">};</span> <span class="c1">// 불변성을 지키면서 업데이트한 새로운 상태를 반환합니다.</span>
+</pre></table></code></div></div><div class="language-react highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="p">{</span>
+  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">INCREMENT</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p>Redux 에서는 액션 객체에는 어떤 액션인지 알려주는 type 필드가 꼭 있어야 하지만, useReducer에서 사용하는 액션 객체는 꼭 type 를 지니고 있을 필요가 없습니다. 심지어, 객체가 아니라 문자열이나, 숫자여도 상관이 없습니다.</p><h4 id="41-카운터-구현하기">4.1 카운터 구현하기</h4><p>먼저, 기존의 Counter 컴포넌트를 useReducer 를 사용하여 구현해봅시다.</p><p>CounterUseReducer.js</p><div class="language-react highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+</pre><td class="rouge-code"><pre><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useReducer</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">reducer</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// action.type 에 따라 다른 작업 수행</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="dl">'</span><span class="s1">INCREMENT</span><span class="dl">'</span> <span class="p">:</span>
+      <span class="k">return</span> <span class="p">{</span> <span class="na">value</span> <span class="p">:</span> <span class="nx">state</span><span class="p">.</span><span class="nx">value</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">};</span>
+    <span class="k">case</span> <span class="dl">'</span><span class="s1">DECREMENT</span><span class="dl">'</span> <span class="p">:</span>
+      <span class="k">return</span> <span class="p">{</span> <span class="na">value</span> <span class="p">:</span> <span class="nx">state</span><span class="p">.</span><span class="nx">value</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">};</span>
+    <span class="nl">default</span> <span class="p">:</span>
+    	<span class="c1">// 아무것도 해당되지 않을 때 기존 상태 반환</span>
+      <span class="k">return</span> <span class="nx">state</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">CounterUseReducer</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// state 현재 value </span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">state</span><span class="p">,</span> <span class="nx">dispatch</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useReducer</span><span class="p">(</span><span class="nx">reducer</span><span class="p">,</span> <span class="p">{</span> <span class="na">value</span><span class="p">:</span> <span class="mi">0</span> <span class="p">});</span>
+  
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+        현재 카운터 값은 <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">state</span><span class="p">.</span><span class="nx">value</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">dispatch</span><span class="p">({</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">INCREMENT</span><span class="dl">'</span> <span class="p">})</span><span class="si">}</span><span class="p">&gt;</span>+1<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">dispatch</span><span class="p">({</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">DECREMENT</span><span class="dl">'</span> <span class="p">})</span><span class="si">}</span><span class="p">&gt;</span>-1<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">CounterUseReducer</span><span class="p">;</span>
+        
+</pre></table></code></div></div><p>useReducer 의 첫번째 param는 리듀서 함수(reducer), 두번째 param는 해당 리듀서의 기본 값을 넣습니다. 이 Hook 을 사용 했을 때에는 state 값과 dispatch 함수를 받아오게 됩니다. state 는 현재 상태, dispatch 는 액션을 발생시키는 함수 입니다. dispatch(action) 와 같은 형태로, 함수 안에 param로 액션 값을 넣어주면 리듀서 함수가 호출되는 구조 입니다.</p><p>useReducer 을 사용했을 때의 가장 큰 장점은 컴포넌트 업데이트 로직을 컴포넌트 바깥으로 빼낼 수 있다는 점 입니다.</p><h2 id="42-인풋-상태-관리하기">4.2 인풋 상태 관리하기</h2><blockquote><p>useReducer 를 사용하여 Info 컴포넌트에서 인풋 상태를 관리해보겠습니다.</p></blockquote><blockquote><p>useReducer 를 사용한다면 기존에 클래스형 컴포넌트에서 input 태그에 name 값을 할당하고 e.target.name 을 참조하여 setState 를 해준 것과 유사한 방식으로 작업을 처리 할 수 있습니다.</p></blockquote><h4 id="infousereducer">InfoUseReducer</h4><div class="language-react highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+</pre><td class="rouge-code"><pre><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useReducer</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">reducer</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="p">...</span><span class="nx">state</span><span class="p">,</span>
+        <span class="p">[</span><span class="nx">action</span><span class="p">.</span><span class="nx">name</span><span class="p">]:</span> <span class="nx">action</span><span class="p">.</span><span class="nx">value</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">InfoUseReducer</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">state</span><span class="p">,</span> <span class="nx">dispatch</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useReducer</span><span class="p">(</span><span class="nx">reducer</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">name</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+        <span class="na">nickname</span><span class="p">:</span> <span class="dl">''</span>
+    <span class="p">});</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">nickname</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">state</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">onChange</span> <span class="o">=</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">dispatch</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">);</span>
+    <span class="p">};</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="p">=</span><span class="s">"name"</span> <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">name</span><span class="si">}</span> <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">onChange</span><span class="si">}</span> <span class="p">/&gt;</span>
+                <span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="p">=</span><span class="s">"nickname"</span> <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">nickname</span><span class="si">}</span> <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">onChange</span><span class="si">}</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>이름:<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> <span class="si">{</span><span class="nx">name</span><span class="si">}</span>
+                <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>닉네임: <span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span>
+                    <span class="si">{</span><span class="nx">nickname</span><span class="si">}</span>
+                <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+<span class="p">}</span> 
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">InfoUseReducer</span><span class="p">;</span>
+</pre></table></code></div></div><blockquote><p>useReducer 에서의 액션은 그 어떤 값이 되어도 됩니다. 그래서 이번에 우리는 이벤트 객체가 지니고있는 e.target 값 자체를 액션 값으로 사용하였습니다.</p><p>이런 식으로 인풋을 관리하면, 아무리 인풋의 개수가 많아져도 코드를 짧고 깔끔하게 유지 할 수 있습니다.</p></blockquote><h2 id="5-usememo">5. useMemo</h2><blockquote><p>useMemo 를 사용하면 함수형 컴포넌트 내부에서 발생하는 연산을 최적화 할 수 있습니다. 리스트에 숫자를 추가하면서 해당 숫자들의 평균을 나타내는 함수형 컴포넌트를 작성해봅시다.</p></blockquote><h4 id="averagejs">Average.js</h4><div class="language-react highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+</pre><td class="rouge-code"><pre><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useState</span><span class="p">,</span> <span class="nx">useMemo</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">getAverage</span> <span class="o">=</span> <span class="nx">numbers</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">평균값 계산중....</span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">numbers</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">sum</span> <span class="o">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span><span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">sum</span> <span class="o">/</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">Average</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">list</span><span class="p">,</span> <span class="nx">setList</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">([]);</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">number</span><span class="p">,</span> <span class="nx">setNumber</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="dl">''</span><span class="p">);</span>
+
+    <span class="kd">const</span> <span class="nx">onChange</span> <span class="o">=</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">setNumber</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+    <span class="p">};</span>
+    <span class="kd">const</span> <span class="nx">onInsert</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">nextList</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">number</span><span class="p">));</span>
+        <span class="nx">setList</span><span class="p">(</span><span class="nx">nextList</span><span class="p">);</span>
+        <span class="nx">setNumber</span><span class="p">(</span><span class="dl">''</span><span class="p">);</span>
+    <span class="p">};</span>
+
+    <span class="kd">const</span> <span class="nx">avg</span> <span class="o">=</span> <span class="nx">useMemo</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">getAverage</span><span class="p">(</span><span class="nx">list</span><span class="p">),</span> <span class="p">[</span><span class="nx">list</span><span class="p">]);</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">number</span><span class="si">}</span> <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">onChange</span><span class="si">}</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="nx">onInsert</span><span class="si">}</span><span class="p">&gt;</span>등록<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+                <span class="si">{</span><span class="nx">list</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">value</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(&lt;</span><span class="nt">li</span> <span class="na">key</span><span class="p">=</span><span class="si">{</span><span class="nx">index</span><span class="si">}</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">value</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;))</span><span class="si">}</span>
+            <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>평균 값:<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> <span class="si">{</span><span class="nx">avg</span><span class="si">}</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">Average</span><span class="p">;</span>
+</pre></table></code></div></div><blockquote><p><code class="language-plaintext highlighter-rouge">const avg = useMemo(() =&gt; getAverage(list), [list]);</code>부분 덕분에 list 배열의 내용이 바뀔 때에만 getAverage 함수가 호출되도록 할 수 있습니다.</p></blockquote><h2 id="6-usecallback">6. useCallback</h2><blockquote><p>useCallback 은 useMemo와 상당히 비슷한 함수입니다. useCallback 은 주로 렌더링 성능을 최적화해야 하는 상황에서 사용됩니다. 이 Hook을 사용하면 이벤트 핸들러 함수를 필요할 때만 생성 할 수 있습니다. 우리가 5. useMemo 구현한 Average 컴포넌트를 보면 onChange, onInsert 라는 함수를 선언해주었습니다. 이렇게 선언을 하게 되면 컴포넌트가 리렌더링 될 때마다 이 함수들이 새로 생성됩니다. 대부분의 경우에는 이러한 방식이 문제가 되지 않지만, 컴포넌트의 렌더링이 자주 발생하거나 렌더링 해야할 컴포넌트의 개수가 많아진다면 이 부분을 최적화 해주시는 것이 좋습니다.</p><p>useCallback 를 사용하여 최적화를 해봅시다.</p></blockquote><h4 id="averagejs-1">Average.js</h4><div class="language-react highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+</pre><td class="rouge-code"><pre><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useState</span><span class="p">,</span> <span class="nx">useMemo</span><span class="p">,</span> <span class="nx">useCallback</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">getAverage</span> <span class="o">=</span> <span class="nx">numbers</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">평균값 계산중....</span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">numbers</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">sum</span> <span class="o">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span><span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">sum</span> <span class="o">/</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">Average</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">list</span><span class="p">,</span> <span class="nx">setList</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">([]);</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">number</span><span class="p">,</span> <span class="nx">setNumber</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="dl">''</span><span class="p">);</span>
+
+    <span class="kd">const</span> <span class="nx">onChange</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">(</span><span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">setNumber</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+    <span class="p">},[]);</span> <span class="c1">// 컴포넌트가 처음 렌더링 될 때만 함수 생성 </span>
+
+    <span class="kd">const</span> <span class="nx">onInsert</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">(</span>
+        <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="kd">const</span> <span class="nx">nextList</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">number</span><span class="p">));</span>
+            <span class="nx">setList</span><span class="p">(</span><span class="nx">nextList</span><span class="p">);</span>
+            <span class="nx">setNumber</span><span class="p">(</span><span class="dl">''</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="p">[</span><span class="nx">number</span><span class="p">,</span> <span class="nx">list</span><span class="p">]</span>
+    <span class="p">);</span> <span class="c1">// number 혹은 list 가 바뀌었을 때만 함수 생성 </span>
+
+    <span class="c1">// @params EventHandler 최적화 시킬 이벤트</span>
+    <span class="c1">// @params any 관찰 대상 값</span>
+    <span class="kd">const</span> <span class="nx">avg</span> <span class="o">=</span> <span class="nx">useMemo</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">getAverage</span><span class="p">(</span><span class="nx">list</span><span class="p">),</span> <span class="p">[</span><span class="nx">list</span><span class="p">]);</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">number</span><span class="si">}</span> <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">onChange</span><span class="si">}</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="nx">onInsert</span><span class="si">}</span><span class="p">&gt;</span>등록<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+                <span class="si">{</span><span class="nx">list</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">value</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(&lt;</span><span class="nt">li</span> <span class="na">key</span><span class="p">=</span><span class="si">{</span><span class="nx">index</span><span class="si">}</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">value</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;))</span><span class="si">}</span>
+            <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>평균 값:<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> <span class="si">{</span><span class="nx">avg</span><span class="si">}</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">Average</span><span class="p">;</span>
+</pre></table></code></div></div><blockquote><p>useCallback 의 첫번째 파라미터에는 우리가 생성해주고 싶은 함수를 넣어주고, 두번째 파라미터에는 배열을 넣어주면 되는데 이 배열에는 어떤 값이 바뀌었을 때 함수를 새로 생성해주어야 하는지 명시해주어야 합니다.</p><p>만약에 onChange 처럼 비어있는 배열을 넣게 되면 컴포넌트가 렌더링 될 때 단 한번만 함수가 생성되며, onInsert 처럼 배열 안에 number, list 를 넣게 되면 input 내용이 바뀌거나 새로운 항목이 추가 될 때 마다 함수가 생성됩니다.</p><p>함수 내부에서 기존의 상태 값을 의존해야 할 때는 꼭 두번째 파라미터 안에 포함을 시켜주어야 합니다.</p></blockquote><blockquote><p>참고로 useMemo, useCallback 의 차이를 보여주는 코드 입니다.</p><div class="language-react highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="nx">useCallback</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+ <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">hello world</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">},</span> <span class="p">[])</span>
+
+<span class="nx">useMemo</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+ <span class="kd">const</span> <span class="nx">fn</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">hello world</span><span class="dl">'</span><span class="p">);</span>
+ <span class="p">}</span>
+ <span class="k">return</span> <span class="nx">fn</span><span class="p">;</span>
+<span class="p">},</span> <span class="p">[])</span>
+</pre></table></code></div></div><p>위의 두함수는 똑같은 기능을 하는 함수 입니다. useCallback 은 결국 useMemo 의 함수를 반환하는 상황에서 좀 더 편하게 사용 할 수 있는 Hook입니다.</p><p>useMemo : 숫자, 문자열, 객체 처럼 일반 값을 재사용하기 위해서 사용 useCallback : 함수를 재사용 하기 위해서 사용</p></blockquote><h2 id="7-useref">7. useRef</h2><blockquote><p>useRef Hook 은 함수형 컴포넌트에서 ref 를 쉽게 사용 할 수 있도록 도와줍니다. Average 컴포넌트에서 등록 버튼을 눌렀을 때 포커스가 인풋 쪽으로 넘어가도록 코드를 작성 해보겠습니다.</p></blockquote><h4 id="71-ref">7.1. Ref</h4><p>​ 간단하게 말하면 javaScript 의 ID를 대신 하여 사용된다.</p><blockquote><p>일반적인 데이터 플로우에서 벗어나 직접적으로 자식을 수정해야 하는 경우도 가끔씩 있습니다. 수정할 자식은 React 컴포넌트의 인스턴스일 수도 있고, DOM 엘리멘트일 수도 있습니다. React의 Ref는 두 셩우 모두를 위한 해결책을 제공합니다 - <a href="https://ko.reactjs.org/docs/refs-and-the-dom.html">React Site</a></p></blockquote><h4 id="averagejs-2">Average.js</h4><div class="language-react highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+</pre><td class="rouge-code"><pre><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useState</span><span class="p">,</span> <span class="nx">useMemo</span><span class="p">,</span> <span class="nx">useCallback</span><span class="p">,</span> <span class="nx">useRef</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">getAverage</span> <span class="o">=</span> <span class="nx">numbers</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">평균값 계산중....</span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">numbers</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">sum</span> <span class="o">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span><span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">sum</span> <span class="o">/</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">Average</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">list</span><span class="p">,</span> <span class="nx">setList</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">([]);</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">number</span><span class="p">,</span> <span class="nx">setNumber</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="dl">''</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">inputEl</span> <span class="o">=</span> <span class="nx">useRef</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+
+    <span class="kd">const</span> <span class="nx">onChange</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">(</span><span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">setNumber</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+    <span class="p">},[]);</span> <span class="c1">// 컴포넌트가 처음 렌더링 될 때만 함수 생성 </span>
+
+    <span class="kd">const</span> <span class="nx">onInsert</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">(</span>
+        <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">number</span><span class="p">));</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isNaN</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">number</span><span class="p">)))</span> <span class="p">{</span>
+                <span class="kd">const</span> <span class="nx">nextList</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">number</span><span class="p">));</span>
+                <span class="nx">setList</span><span class="p">(</span><span class="nx">nextList</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="nx">setNumber</span><span class="p">(</span><span class="dl">''</span><span class="p">);</span>
+            <span class="nx">inputEl</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+        <span class="p">},</span>
+        <span class="p">[</span><span class="nx">number</span><span class="p">,</span> <span class="nx">list</span><span class="p">]</span>
+    <span class="p">);</span> <span class="c1">// number 혹은 list 가 바뀌었을 때만 함수 생성 </span>
+
+    <span class="c1">// @params EventHandler 최적화 시킬 이벤트</span>
+    <span class="c1">// @params any 관찰 대상 값</span>
+    <span class="kd">const</span> <span class="nx">avg</span> <span class="o">=</span> <span class="nx">useMemo</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">getAverage</span><span class="p">(</span><span class="nx">list</span><span class="p">),</span> <span class="p">[</span><span class="nx">list</span><span class="p">]);</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">number</span><span class="si">}</span> <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">onChange</span><span class="si">}</span> <span class="na">ref</span><span class="p">=</span><span class="si">{</span><span class="nx">inputEl</span><span class="si">}</span><span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="nx">onInsert</span><span class="si">}</span><span class="p">&gt;</span>등록<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+                <span class="si">{</span><span class="nx">list</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">value</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(&lt;</span><span class="nt">li</span> <span class="na">key</span><span class="p">=</span><span class="si">{</span><span class="nx">index</span><span class="si">}</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">value</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;))</span><span class="si">}</span>
+            <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>평균 값:<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> <span class="si">{</span><span class="nx">avg</span><span class="si">}</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">Average</span><span class="p">;</span>
+</pre></table></code></div></div><blockquote><p>useRef 를 사용하여 ref 를 설정 <code class="language-plaintext highlighter-rouge">ref={inputEl}</code>, <code class="language-plaintext highlighter-rouge">inputEl</code>객체 안의 current 값이 실제 엘리멘트<code class="language-plaintext highlighter-rouge">input</code>를 가리키게 됩니다.</p></blockquote><h4 id="72-로컬-변수-사용하기">7.2 로컬 변수 사용하기</h4><blockquote><p>추가적으로, 컴포넌트 로컬 변수를 사용해야 할 때도 useRef 를 활용 할 수 있습니다. 여기서 로컬 변수라 함은, 렌더링이랑은 관계 없이 바뀔 수 있는 값을 의미합니다. 만약에 클래스 형태의 컴포넌트로 따지자면 다음 괕은 코드 입니다.</p></blockquote><div class="language-react highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre><td class="rouge-code"><pre><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="nx">Class</span> <span class="nx">MyComponent</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="nx">setId</span> <span class="o">=</span> <span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">n</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nx">printId</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        MyCompoent
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>    
+<span class="p">};</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">MyComponent</span>
+</pre></table></code></div></div><p>이러한 코드를 만약에 함수형 컴포넌트로 작성한다면 다음과 같이 작성 될 수 있습니다.</p><div class="language-react highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre><td class="rouge-code"><pre><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useRef</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">RefSamepl</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">useRef</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">setId</span> <span class="o">=</span> <span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">id</span><span class="p">.</span><span class="nx">current</span> <span class="o">=</span> <span class="nx">n</span><span class="p">;</span>
+  <span class="p">};</span>
+  
+  <span class="kd">const</span> <span class="nx">printId</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">id</span><span class="p">.</span><span class="nx">current</span><span class="p">);</span>
+  <span class="p">};</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="nx">refSample</span>
+    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">};</span>
+<span class="p">};</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">RefSample</span><span class="p">;</span>
+</pre></table></code></div></div><p>주의 하실 점은, 이렇게 넣은 ref 안의 값은 바뀌어도 컴포넌트가 렌더링 되지 않는다는 점입니다. 렌더링과 관련 되지 않는 값을 관리 할 때만 이러한 방식으로 코드를 작성해주세요</p><h2 id="8-커스텀-hooks-만들기">8. 커스텀 Hooks 만들기</h2><blockquote><p>만약에 여러 컴포넌트에서 비슷한 기능을 공유하게 되는 일이 발생한다면 이를 우리들만의 Hook 을 작성하여 로직을 재사용 할 수 있습니다.</p></blockquote><h4 id="81-useinputs">8.1 useInputs</h4><blockquote><p>한번 우리가 기존에 Info 컴포넌트에서 여러개의 Input을 관리하기 위하여 useReducer 로 해결했던 로직을 useInputs 라는 Hook 으로 따로 분리 해보겠습니다.</p></blockquote><h4 id="useinputsjs">useInputs.js</h4><div class="language-react highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre><td class="rouge-code"><pre><span class="k">import</span> <span class="p">{</span> <span class="nx">useReducer</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">reducer</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="p">...</span><span class="nx">state</span><span class="p">,</span>
+        <span class="p">[</span><span class="nx">action</span><span class="p">.</span><span class="nx">name</span><span class="p">]:</span> <span class="nx">action</span><span class="p">.</span><span class="nx">value</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">useInputs</span><span class="p">(</span><span class="nx">initialForm</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">state</span><span class="p">,</span> <span class="nx">dispatch</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useReducer</span><span class="p">(</span><span class="nx">reducer</span><span class="p">,</span> <span class="nx">initialForm</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">onChange</span> <span class="o">=</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">dispatch</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">);</span>
+    <span class="p">};</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nx">state</span><span class="p">,</span> <span class="nx">onChange</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></table></code></div></div><h4 id="infouseinputjs">InfoUseInput.js</h4><div class="language-react highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</pre><td class="rouge-code"><pre><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">useInputs</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./useInputs</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">InfoUseInput</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">state</span><span class="p">,</span> <span class="nx">onChange</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useInputs</span><span class="p">({</span>
+    <span class="na">name</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+    <span class="na">nickname</span><span class="p">:</span> <span class="dl">''</span>
+  <span class="p">});</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">nickname</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">state</span><span class="p">;</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="p">=</span><span class="s">"name"</span> <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">name</span><span class="si">}</span> <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">onChange</span><span class="si">}</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="p">=</span><span class="s">"nickname"</span> <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">nickname</span><span class="si">}</span> <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">onChange</span><span class="si">}</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>이름:<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> <span class="si">{</span><span class="nx">name</span><span class="si">}</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>닉네임:<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> <span class="si">{</span><span class="nx">nickname</span><span class="si">}</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">InfoUseInput</span><span class="p">;</span>
+</pre></table></code></div></div><h4 id="82-usepromise">8.2 usePromise</h4><blockquote><p>이번에는 함수형 컴포넌트에서 Promise 를 더 쉽게 사용 할 수 있는 Hook 을 만들어봅시다.</p></blockquote><p>usePromise.js</p><div class="language-react highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre><td class="rouge-code"><pre><span class="k">import</span> <span class="p">{</span> <span class="nx">useState</span><span class="p">,</span> <span class="nx">useEffect</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">usePromise</span><span class="p">(</span><span class="nx">promiseCreator</span><span class="p">,</span> <span class="nx">deps</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">resolved</span><span class="p">,</span> <span class="nx">setResolved</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">loading</span><span class="p">,</span> <span class="nx">setLoading</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">error</span><span class="p">,</span> <span class="nx">setError</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">process</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">setLoading</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">promiseCreator</span><span class="p">();</span>
+      <span class="nx">setResolved</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">setError</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nx">setLoading</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+  <span class="p">};</span>
+
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">process</span><span class="p">();</span>
+  <span class="p">},</span> <span class="nx">deps</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="p">[</span><span class="nx">loading</span><span class="p">,</span> <span class="nx">resolved</span><span class="p">,</span> <span class="nx">error</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p>출처 : <a href="https://velog.io/@velopert/react-hooks#3.-usecontext">velopert</a></p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/blogging/'>Blogging</a>, <a href='/categories/react/'>react</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/typography/" class="post-tag no-text-decoration" >typography</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=React Hook - Hoya&url=https://angelring127.github.io/posts/react-hook/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=React Hook - Hoya&u=https://angelring127.github.io/posts/react-hook/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=React Hook - Hoya&url=https://angelring127.github.io/posts/react-hook/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink()" data-toggle="tooltip" data-placement="top" title="Copy link"></i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/Refactoring-01/">리팩터링</a><li><a href="/posts/Babel-01/">Babel 기초</a><li><a href="/posts/Webpack-01/">WebPack 기초</a><li><a href="/posts/Webpack-02/">WebPack 기본 설정 방법</a><li><a href="/posts/Webpack-03/">WebPack 개발 편의 기능</a></ul></div><div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/typography/">typography</a> <a class="post-tag" href="/tags/javascript/">javascript</a> <a class="post-tag" href="/tags/webpack/">webpack</a> <a class="post-tag" href="/tags/coding/">coding</a> <a class="post-tag" href="/tags/babel/">babel</a> <a class="post-tag" href="/tags/docker/">docker</a> <a class="post-tag" href="/tags/favicon/">favicon</a> <a class="post-tag" href="/tags/getting-started/">getting started</a> <a class="post-tag" href="/tags/nas/">nas</a> <a class="post-tag" href="/tags/synology/">synology</a></div></div></div><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/Study-Go/"><div class="card-body"> <span class="timeago small" > Dec 8, 2019 <i class="unloaded">2019-12-08T16:25:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Go Language</h3><div class="text-muted small"><p> Start Go Lang</p></div></div></a></div><div class="card"> <a href="/posts/2019year/"><div class="card-body"> <span class="timeago small" > Dec 20, 2019 <i class="unloaded">2019-12-20T00:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>2019year</h3><div class="text-muted small"><p> 2019 회고록 아는 지인이 요즘 회고록쓰는게 인기라길래 저도 한번 써볼까 합니다. 겸사겸사 지금 딴짓하고 싶기도 하고 해서 일하기가 싫어서 이 글을 쓰고 있는것은 아닙니다. 어떻게 써야 할지 몰라 일단 1월부터 시작 해볼렵니다. 12월 가장 최근 일이라 어찌저찌 쓸수 있게 작업 내용 社内報 ...</p></div></div></a></div><div class="card"> <a href="/posts/Friend/"><div class="card-body"> <span class="timeago small" > Jan 20, 2020 <i class="unloaded">2020-01-20T00:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Friend</h3><div class="text-muted small"><p> 멀리 떠나간 친구 내 친구가 떠났다 지금은 뭘 하든 머리속에서 같이 이야기 했던 기억이 떠오른다. 하지만 이런 기억도 시간이 지나면 잊혀지겠지.. 하지만 나는 잊고 싶지 않다. 그래서 이렇게 그 친구에 대해 써볼까 한다. 은선이를 언제 알게 되었는지는 기억이 없다. 그냥 어느 순간 같이 놀고 있었다. 내 기억으로는 중학교 동창에 고등학...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/first-post/" class="btn btn-outline-primary"><p>First Post</p></a> <a href="/posts/Study-Go/" class="btn btn-outline-primary"><p>Go Language</p></a></div></div></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script> <script type="text/javascript"> const imgs = document.querySelectorAll('#post-wrapper img'); const observer = lozad(imgs); observer.observe(); </script><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2021 <a href="https://twitter.com/HOYA17993842">Hoya</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy/" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-xl-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/tags/typography/">typography</a> <a class="post-tag" href="/tags/javascript/">javascript</a> <a class="post-tag" href="/tags/webpack/">webpack</a> <a class="post-tag" href="/tags/coding/">coding</a> <a class="post-tag" href="/tags/babel/">babel</a> <a class="post-tag" href="/tags/docker/">docker</a> <a class="post-tag" href="/tags/favicon/">favicon</a> <a class="post-tag" href="/tags/getting-started/">getting started</a> <a class="post-tag" href="/tags/nas/">nas</a> <a class="post-tag" href="/tags/synology/">synology</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://angelring127.github.io{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"><div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>{categories}</div><div><i class="fa fa-tag fa-fw"></i>{tags}</div></div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>' }); </script>

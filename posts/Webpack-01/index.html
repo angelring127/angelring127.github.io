@@ -1,0 +1,211 @@
+<!DOCTYPE html><html lang="en" mode="dark" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="theme" content="Chirpy v2.7.2"><meta name="generator" content="Jekyll v4.2.0" /><meta property="og:title" content="WebPack 기초" /><meta name="author" content="Hoya" /><meta property="og:locale" content="en_US" /><meta name="description" content="Webpack 기본 사용법 (CLI)" /><meta property="og:description" content="Webpack 기본 사용법 (CLI)" /><link rel="canonical" href="https://angelring127.github.io/posts/Webpack-01/" /><meta property="og:url" content="https://angelring127.github.io/posts/Webpack-01/" /><meta property="og:site_name" content="Hoya" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2021-04-18T18:10:00+09:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="WebPack 기초" /><meta name="twitter:site" content="@HOYA17993842" /><meta name="twitter:creator" content="@Hoya" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"author":{"@type":"Person","name":"Hoya"},"description":"Webpack 기본 사용법 (CLI)","url":"https://angelring127.github.io/posts/Webpack-01/","@type":"BlogPosting","headline":"WebPack 기초","dateModified":"2021-05-16T06:56:11+09:00","datePublished":"2021-04-18T18:10:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://angelring127.github.io/posts/Webpack-01/"},"@context":"https://schema.org"}</script><title>WebPack 기초 | Hoya</title><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="apple-touch-icon" href="/assets/img/favicons/apple-icon.png"><link rel="apple-touch-icon" href="/assets/img/favicons/apple-icon-precomposed.png"><link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicons/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicons/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicons/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicons/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicons/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/assets/img/favicons/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicons/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="/assets/img/favicons/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicons/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicons/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/manifest.json"><meta name='msapplication-config' content='/assets/img/favicons/browserconfig.xml'><meta name="msapplication-TileColor" content="#ffffff"><meta name="msapplication-TileImage" content="/assets/img/favicons/ms-icon-144x144.png"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="cdn.jsdelivr.net"><link rel="dns-prefetch" href="cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha256-LA89z+k9fjgMKQ/kq4OO2Mrf8VltYml/VES+Rg0fh20=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous"><link rel="preload" href="/assets/css/post.css" as="style"><link rel="stylesheet" href="/assets/css/post.css"><link rel="preload" as="style" href="/assets/css/lib/bootstrap-toc.min.css"><link rel="stylesheet" href="/assets/css/lib/bootstrap-toc.min.css" /> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> <script defer src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.15.0,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script async src="/assets/js/post.min.js"></script> <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id="></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', ''); }); </script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="/assets/img/lian.png" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">Hoya</a></div><div class="site-subtitle font-italic">개발을 할려합니다.</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/tabs/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tabs/tags/" class="nav-link"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/tabs/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/tabs/about/" class="nav-link"> <i class="fa-fw fas fa-info ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center"> <a href="https://github.com/angelring127" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <a href="https://twitter.com/HOYA17993842" aria-label="twitter" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['angelring127','gmail.com'].join('@')" aria-label="email" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" > <i class="fas fa-rss"></i> </a></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Posts </a> </span> <span>WebPack 기초</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>WebPack 기초</h1><div class="post-meta text-muted d-flex flex-column"><div> <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Sun, Apr 18, 2021, 6:10 PM +0900" > Apr 18 <i class="unloaded">2021-04-18T18:10:00+09:00</i> </span> by <span class="author"> Hoya </span></div><div> <span> Updated <span class="timeago lastmod" data-toggle="tooltip" data-placement="bottom" title="Sun, May 16, 2021, 6:56 AM +0900" > May 16 <i class="unloaded">2021-05-16T06:56:11+09:00</i> </span> </span> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="2151 words">11 min</span></div></div><div class="post-content"><h2 id="webpack-기본-사용법-cli">Webpack 기본 사용법 (CLI)</h2><p>React, Vue, Angular중 어느 것을 사용하든 Webpack이라는 녀석을 사용하게 됩니다.</p><p>Webpack이란 기본적으로 자바스크립트 모듈 번들러(JavaScript Module Bundler)이며 웹 개발을 도와주는 많은 부가 기능을 가지고 있습니다. 간단한 예제 프로젝트를 통해 Webpack에 대해 알아 보겠습니다.</p><h4 id="예제-프로젝트-생성하기">예제 프로젝트 생성하기</h4><p>먼저 <code class="language-plaintext highlighter-rouge">webpack-example</code>디렉토리를 생성 후 그 안에 예제 프로젝트를 시작 하겠습니다.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="nb">mkdir </span>webpack-example
+<span class="nb">cd </span>webpack-example
+</pre></table></code></div></div><h4 id="html과-javascript파일-작성">HTML과 Javascript파일 작성</h4><ul><li>index.html</ul><div class="language-html highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Webpack Example<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"./index.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></table></code></div></div><ul><li>index.js</ul><div class="language-javascript highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">currentTime</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">date</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="nx">hours</span> <span class="o">=</span> <span class="nx">date</span><span class="p">.</span><span class="nx">getHours</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="nx">minutes</span> <span class="o">=</span> <span class="nx">date</span><span class="p">.</span><span class="nx">getMinutes</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="nx">seconds</span> <span class="o">=</span> <span class="nx">date</span><span class="p">.</span><span class="nx">getSeconds</span><span class="p">()</span>
+  <span class="k">return</span> <span class="s2">`</span><span class="p">${</span><span class="nx">hours</span><span class="p">}</span><span class="s2">:</span><span class="p">${</span><span class="nx">minutes</span><span class="p">}</span><span class="s2">:</span><span class="p">${</span><span class="nx">seconds</span><span class="p">}</span><span class="s2">`</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">div</span><span class="dl">"</span><span class="p">)</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">div</span><span class="p">)</span>
+<span class="nx">setInterval</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">div</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="nx">currentTime</span><span class="p">()),</span> <span class="mi">1000</span><span class="p">)</span>
+</pre></table></code></div></div><h4 id="외부-라이브러리-사용">외부 라이브러리 사용</h4><p>Moment.js라는 라이브러리 이용</p><ul><li>Index.html</ul><div class="language-html highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Webpack Example<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://unpkg.com/moment@2.22.2/moment.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"./index.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></table></code></div></div><ul><li>Index.js</ul><div class="language-javascript highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">currentTime</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">moment</span><span class="p">().</span><span class="nx">format</span><span class="p">(</span><span class="dl">"</span><span class="s2">H:m:s</span><span class="dl">"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">div</span><span class="dl">"</span><span class="p">)</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">div</span><span class="p">)</span>
+<span class="nx">setInterval</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">div</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="nx">currentTime</span><span class="p">()),</span> <span class="mi">1000</span><span class="p">)</span>
+</pre></table></code></div></div><p>위의 코드는 전통적으로 웹사이트에서 외부 자바스크립트 라이브러리를 사용하던 전형적인 방법입니다. 이러한 방법에는 여러 단점이 존재합니다.</p><p>먼저 <code class="language-plaintext highlighter-rouge">index.js</code>는 <code class="language-plaintext highlighter-rouge">index.html</code>파일 없이는 정상적으로 작동할 수 없습니다.</p><p>또한 외부 자바스크립트 라이브러리에 들어있는 모든 변수, 함수, 객체들이 사용 여부에 관계없이 글로벌 네임스페이스를 오염시키게 됩니다. 게다가 외부 라이브러리를 추가적으로 사용할 때 마다 javascript 파일이 아닌 HTML파일을 수정해줘야 된다는 것도 마음에 들지 않습니다.</p><p>이는 다른 프로그래밍 언어들처럼 웹에서도 자바스크립트를 통한 자체적인 외부 모듈 임포트 기능이 절실해지는 시점입니다.</p><h3 id="npm으로-외부-라이브러리-설치">NPM으로 외부 라이브러리 설치</h3><p>좀 더 체계적으로 예제 프로젝트의 외부 라이브러리를 관리하기 위해서 Node.js 패키지 매니저인 NPM을 도입하겠습니다.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre><td class="rouge-code"><pre>npm init <span class="nt">-y</span>
+Wrote to /Documents/Project/Web/webpack-example/package.json:
+
+<span class="o">{</span>
+  <span class="s2">"name"</span>: <span class="s2">"webpack-example"</span>,
+  <span class="s2">"version"</span>: <span class="s2">"1.0.0"</span>,
+  <span class="s2">"description"</span>: <span class="s2">""</span>,
+  <span class="s2">"main"</span>: <span class="s2">"index.js"</span>,
+  <span class="s2">"scripts"</span>: <span class="o">{</span>
+    <span class="s2">"test"</span>: <span class="s2">"echo </span><span class="se">\"</span><span class="s2">Error: no test specified</span><span class="se">\"</span><span class="s2"> &amp;&amp; exit 1"</span>
+  <span class="o">}</span>,
+  <span class="s2">"keywords"</span>: <span class="o">[]</span>,
+  <span class="s2">"author"</span>: <span class="s2">""</span>,
+  <span class="s2">"license"</span>: <span class="s2">"ISC"</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>그리고 Moment.js 패키지를 설치하겠습니다.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre>npm i <span class="nt">-S</span> moment
++ moment@2.29.1
+added 1 package from 6 contributors and audited 1 package <span class="k">in </span>0.608s
+found 0 vulnerabilities
+</pre></table></code></div></div><h3 id="es6-importexport">ES6 Import/Export</h3><p>ES6는 다른 프로그래밍 언어처럼 하나의 자바스크립트 모듈에서 다른 자바스크립트 모듈을 사용할 수 있도록 <code class="language-plaintext highlighter-rouge">import</code>나<code class="language-plaintext highlighter-rouge">export</code>와 키워드를 제공합니다.</p><p>먼저<code class="language-plaintext highlighter-rouge">index.html</code>파일에서 Moment.js의 소스 파일에 대한 CDN링크를 제거합니다. 그리고 <code class="language-plaintext highlighter-rouge">index.js</code>파일 맨 위로 Moment.js 패키지를 임포트 합니다.</p><ul><li>index.js</ul><div class="language-javascript highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre><span class="k">import</span> <span class="nx">moment</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">moment</span><span class="dl">"</span>
+
+<span class="kd">function</span> <span class="nx">currentTime</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">moment</span><span class="p">().</span><span class="nx">format</span><span class="p">(</span><span class="dl">"</span><span class="s2">H:m:s</span><span class="dl">"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">div</span><span class="dl">"</span><span class="p">)</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">div</span><span class="p">)</span>
+<span class="nx">setInterval</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">div</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="nx">currentTime</span><span class="p">()),</span> <span class="mi">1000</span><span class="p">)</span>
+</pre></table></code></div></div><p><code class="language-plaintext highlighter-rouge">index.html</code>파일을 다시 열어보면, 다음과 같이<code class="language-plaintext highlighter-rouge">index.js</code> 파일의 <code class="language-plaintext highlighter-rouge">import</code>라인에서 구문 에러가 발생한다는 것을 알 수 있습니다.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>Uncaught SyntaxError: Cannot use import statement outside a module
+</pre></table></code></div></div><p>이를 통해 일반 브라우저는 ES6의 <code class="language-plaintext highlighter-rouge">import</code> 키워드를 해석할 수 없다는 것을 알게되었습니다. 이제부터 웹팩(Webpack)를 통해 이 문제를 해결해보도록 하겠습니다.</p><h3 id="webpack과-webpack-cli-패키지-설치">Webpack과 Webpack CLI 패키지 설치</h3><p>예제 프로젝트에 <code class="language-plaintext highlighter-rouge">webpack</code>과<code class="language-plaintext highlighter-rouge">webpack-cli</code>패키지를 설치합니다. <code class="language-plaintext highlighter-rouge">Webpack</code>은 웹팩의 핵심 패키지이며 <code class="language-plaintext highlighter-rouge">webpack-cli</code>는 터미널에서 <code class="language-plaintext highlighter-rouge">webpack</code>커맨드를 실행할 수 있게 해주는 커맨드라인 도구 입니다. 두 개의 패키지 모두 개발할 때만 필요한 의존성이기 때문에 <code class="language-plaintext highlighter-rouge">-D</code> 옵션을 사용하였습니다.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre>➜  webpack-example npm i <span class="nt">-D</span> webpack
++ webpack@5.33.2
+added 73 packages from 121 contributors and audited 74 packages <span class="k">in </span>10.076s
+
+➜  webpack-example npm i <span class="nt">-D</span> webpack-cli
++ webpack-cli@4.6.0
+added 50 packages from 40 contributors and audited 124 packages <span class="k">in </span>4.254s
+</pre></table></code></div></div><h3 id="webpack-bundle-만들기">Webpack Bundle 만들기</h3><p>프로젝트 디렉토리 안에 소스 디렉토리(src)와 배포 디렉토리(dist)를 생성합니다. 그리고 <code class="language-plaintext highlighter-rouge">index.js</code>파일을 소스 디렉토리로 이동시킵니다.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="nb">mkdir </span>src dist
+<span class="nb">mv </span>index.js src/
+</pre></table></code></div></div><p>그런 다음, 다음과 같이 <code class="language-plaintext highlighter-rouge">npx webpack</code>커맨드를 실행시키면, 웹팩이 소스 디렉토리 안의 <code class="language-plaintext highlighter-rouge">index.js</code>파일과 그 안에 <code class="language-plaintext highlighter-rouge">import</code> 되어 있던 Moment.js 패키지까지 읽어들여 하나의 파일 번들로 묶은 후 배포 디렉토리 안에 <code class="language-plaintext highlighter-rouge">main.js</code>파일 로 생성 시켜줍니다. 우리는 이 과정을 흔히 번들링이라고 합니다.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre><td class="rouge-code"><pre>npx webpack
+asset main.js 290 KiB <span class="o">[</span>emitted] <span class="o">[</span>minimized] <span class="o">[</span>big] <span class="o">(</span>name: main<span class="o">)</span> 1 related asset
+runtime modules 786 bytes 4 modules
+modules by path ./node_modules/moment/locale/<span class="k">*</span>.js 499 KiB 135 modules
+./src/index.js 220 bytes <span class="o">[</span>built] <span class="o">[</span>code generated]
+./node_modules/moment/moment.js 170 KiB <span class="o">[</span>built] <span class="o">[</span>code generated]
+./node_modules/moment/locale/ <span class="nb">sync</span> ^<span class="se">\.\/</span>.<span class="k">*</span><span class="nv">$ </span>3.21 KiB <span class="o">[</span>optional] <span class="o">[</span>built] <span class="o">[</span>code generated]
+
+</pre></table></code></div></div><p><code class="language-plaintext highlighter-rouge">dist/main.js</code>파일을 열어보면 webpack이 소스 코드를 최적화(uglify/minify) 해놓았음을 알 수 있습니다. 브라우저가 해석해야할 코드의 크기를 줄여주기 때문에 웹 어플리케이션의 성능이 좋아지며, 사람이 읽기 어렵기 때문에 약간의 보안적인 이점도 있습니다.</p><h3 id="webpack-bundle-참조하기">Webpack Bundle 참조하기</h3><p>이제 <code class="language-plaintext highlighter-rouge">index.html</code>파일이 우리가 작성한 원래 소스 파일이 아닌 webpack이 만들어준 번들 파일이 참조하도록 수정합니다.</p><div class="language-html highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Webpack Example<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"./dist/main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></table></code></div></div><p>다시 브라우져에서 <code class="language-plaintext highlighter-rouge">index.html</code>을 실행해보면 제대로 현재 시간이 표시되는 것을 확인할 수 있습니다. 이번에는 크롬 뿐만 아니라 익스플로러도 IE8이상이라면 정상적으로 작동하게 됩니다. 왜냐하면 웹팩이 Babel을 이용하여 ES6 문법으로 작성된 코드를 ES5 문법으로 변환(transpile)해주기 때문에 <code class="language-plaintext highlighter-rouge">main.js</code>파일을 ES6 문법을 지원하지 않은 브라우저도 해석할 수 있습니다.</p><h4 id="javascript-모듈화하기">javaScript 모듈화하기</h4><p>이제 ES6 모듈 키워드(<code class="language-plaintext highlighter-rouge">import</code>,<code class="language-plaintext highlighter-rouge">export</code>)를 사용할 수 있으나 비단 외부 모듈을 사용할 때 뿐만 아니라 프로젝트를 모듈화할 때도 웹팩을 활용할 수도 있을 것입니다.</p><p>먼저 소스 디렉토리(<code class="language-plaintext highlighter-rouge">src</code>) 안에 <code class="language-plaintext highlighter-rouge">time.js</code>라는 자바스크립트 모듈 파일을 만들고 currentTime()함수를 <code class="language-plaintext highlighter-rouge">index.js</code>로 부터 옮겨옵니다. <code class="language-plaintext highlighter-rouge">currentTime()</code>함수에서 Moment.js를 사용하기 때문에 import하는 부분도 함께 옮겨와야 합니다. <code class="language-plaintext highlighter-rouge">export</code> 키워드를 사용해서 옮겨온 <code class="language-plaintext highlighter-rouge">currentTime()</code>함수를 외부에 노출 시킵니다.</p><ul><li>time.js</ul><div class="language-javascript highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="k">import</span> <span class="nx">moment</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">moment</span><span class="dl">"</span>
+
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">currentTime</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">moment</span><span class="p">().</span><span class="nx">format</span><span class="p">(</span><span class="dl">"</span><span class="s2">H:m:s</span><span class="dl">"</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p><code class="language-plaintext highlighter-rouge">index.js</code>파일에는 제거된 코드를 대신해서 <code class="language-plaintext highlighter-rouge">time.js</code>모듈을 임포트하는 코드를 추가합니다.</p><ul><li>index.js</ul><div class="language-javascript highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="k">import</span> <span class="p">{</span> <span class="nx">currentTime</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./time</span><span class="dl">"</span>
+
+<span class="kd">const</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">div</span><span class="dl">"</span><span class="p">)</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">div</span><span class="p">)</span>
+<span class="nx">setInterval</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">div</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="nx">currentTime</span><span class="p">()),</span> <span class="mi">1000</span><span class="p">)</span>
+</pre></table></code></div></div><p>다시 <code class="language-plaintext highlighter-rouge">npx webpack</code>커맨드를 실행해서 새로운 번들 파일을 만든 후 브라우저에서 <code class="language-plaintext highlighter-rouge">index.html</code>파일을 실행해보면 동일하게 현재 시간이 표시되게 됩니다.</p><p>소스 코드의 모듈 간의 의존성을 정리해보면 다음과 같으며, Webpack은 이러한 모듈간의 의존 관계를 트리로 구성하여 하나의 번들 파일로 제공하게 됩니다. 따라서 HTML 파일은 이 최종 번들 파일만을 참조할 수 있으며 이 것이 바로 웹팩이 우리에게 가져다주는 힘입니다.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>index.js (최상위 내부 모듈) -&gt; time.js (내부 모듈) -&gt; moment.js (외부 모듈)
+</pre></table></code></div></div><h4 id="마치면서">마치면서</h4><p>웹팩의 기본 사용법을 보여드리기 위해서 본 포스트에서는 디폴트 설정 기준으로 <code class="language-plaintext highlighter-rouge">webpack</code>커맨드를 직접 사용해서 번들을 만들었습니다. 하지만 대부분이 경우에는 <code class="language-plaintext highlighter-rouge">webpack.config.js</code>라는 설정 파일을 사용하여 웹팩을 사용합니다.</p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/javascript/'>Javascript</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/javascript/" class="post-tag no-text-decoration" >javascript</a> <a href="/tags/webpack/" class="post-tag no-text-decoration" >webpack</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=WebPack 기초 - Hoya&url=https://angelring127.github.io/posts/Webpack-01/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=WebPack 기초 - Hoya&u=https://angelring127.github.io/posts/Webpack-01/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=WebPack 기초 - Hoya&url=https://angelring127.github.io/posts/Webpack-01/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink()" data-toggle="tooltip" data-placement="top" title="Copy link"></i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/Refactoring-01/">리팩터링</a><li><a href="/posts/Babel-01/">Babel 기초</a><li><a href="/posts/Webpack-01/">WebPack 기초</a><li><a href="/posts/Webpack-02/">WebPack 기본 설정 방법</a><li><a href="/posts/Webpack-03/">WebPack 개발 편의 기능</a></ul></div><div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/typography/">typography</a> <a class="post-tag" href="/tags/javascript/">javascript</a> <a class="post-tag" href="/tags/webpack/">webpack</a> <a class="post-tag" href="/tags/coding/">coding</a> <a class="post-tag" href="/tags/babel/">babel</a> <a class="post-tag" href="/tags/docker/">docker</a> <a class="post-tag" href="/tags/favicon/">favicon</a> <a class="post-tag" href="/tags/getting-started/">getting started</a> <a class="post-tag" href="/tags/nas/">nas</a> <a class="post-tag" href="/tags/synology/">synology</a></div></div></div><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/Webpack-02/"><div class="card-body"> <span class="timeago small" > Apr 19 <i class="unloaded">2021-04-19T21:20:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>WebPack 기본 설정 방법</h3><div class="text-muted small"><p> Webpack 기본 설정방법 Etry/Output/Loader/Plugins React, Vue, Angular와 같은 자바스크립트 프레임워크를 기반으로 프로젝트를 하다보면 webpack.config.js라는 파일과 자주 마주치게 됩니다. 바로 Webpack 설정 파일인데요. 이번 포스트에서는 이 설정 파일을 기본으로 한 Webpack 기본 설정 ...</p></div></div></a></div><div class="card"> <a href="/posts/Webpack-03/"><div class="card-body"> <span class="timeago small" > Apr 20 <i class="unloaded">2021-04-20T21:20:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>WebPack 개발 편의 기능</h3><div class="text-muted small"><p> Webpack은 자바스크립트 개발자들이 좀 더 쾌적한 개발 경험을 할 수 있도록 여러가지 개발 편의 기능을 제공합니다. 이 번 포스트에서는 Webpack을 사용하면서 개발 편의성을 개선시킬 수 방법에 대해서 알아보겠습니다. 실습 프로젝트 먼저 실습 프로젝트를 만들겠습니다. 새로운 디렉토리를 만들고 NPM 프로젝트를 초기화 후, Webpack과 W...</p></div></div></a></div><div class="card"> <a href="/posts/Babel-01/"><div class="card-body"> <span class="timeago small" > Apr 18 <i class="unloaded">2021-04-18T18:10:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Babel 기초</h3><div class="text-muted small"><p> 바벨(Babel 7) 기본 자바스크립트 문법은 빠르게 발달 되어가고 있습니다. 하지만 자바스크립트를 실행하는 환경은 이를 받쳐주지 못하는 경우가 많습니다. 그러한 이유로는 브라우저의 종류가 다양하여 모든 브라우저에서 동일하게 문법을 지원하는것이 아니기 때문입니다. 또한 Node.js의 경우 버전에 따라 지원하는 문법이 다르기때문에 브라우저와 동일한 ...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/Babel-01/" class="btn btn-outline-primary"><p>Babel 기초</p></a> <a href="/posts/Webpack-02/" class="btn btn-outline-primary"><p>WebPack 기본 설정 방법</p></a></div></div></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script> <script type="text/javascript"> const imgs = document.querySelectorAll('#post-wrapper img'); const observer = lozad(imgs); observer.observe(); </script><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2021 <a href="https://twitter.com/HOYA17993842">Hoya</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy/" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-xl-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/tags/typography/">typography</a> <a class="post-tag" href="/tags/javascript/">javascript</a> <a class="post-tag" href="/tags/webpack/">webpack</a> <a class="post-tag" href="/tags/coding/">coding</a> <a class="post-tag" href="/tags/babel/">babel</a> <a class="post-tag" href="/tags/docker/">docker</a> <a class="post-tag" href="/tags/favicon/">favicon</a> <a class="post-tag" href="/tags/getting-started/">getting started</a> <a class="post-tag" href="/tags/nas/">nas</a> <a class="post-tag" href="/tags/synology/">synology</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script> <script> $(function() { let initTheme = "default"; if ($("html[mode=dark]").length > 0 || ($("html[mode]").length == 0 && window.matchMedia("(prefers-color-scheme: dark)").matches ) ) { initTheme = "dark"; } let mermaidConf = { theme: initTheme /* <default|dark|forest|neutral> */ }; /* Markdown converts to HTML */ $("pre").has("code.language-mermaid").each(function() { let svgCode = $(this).children().html(); $(this).addClass("unloaded"); $(this).after(`<div class=\"mermaid\">${svgCode}</div>`); }); mermaid.initialize(mermaidConf); }); </script><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://angelring127.github.io{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"><div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>{categories}</div><div><i class="fa fa-tag fa-fw"></i>{tags}</div></div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>' }); </script>
